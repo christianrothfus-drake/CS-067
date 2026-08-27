@@ -3,6 +3,15 @@ import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
+//Acknowledgements
+//  Runestone Academy - Used for learning how a lot of these concepts work including if-statements,
+//      appending to strings, and setting up functions to accept parameters.
+//  Baeldung.com - This was used for learning how to generate random numbers, string concatenation,
+//      and presence of an element in a list.
+//  AlgoCademy - This was used for learning how to slice strings to access the characters I want.
+//  Google AI - Other various inputs I learned from the Google AI overview including how to get user input,
+//      debugging an error with my formatting (I added an extra ';'  -_- ), and comparing booleans.
+
 public class Hangman 
     {
     public static void main(String[] args) 
