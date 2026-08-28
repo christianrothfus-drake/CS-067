@@ -3,21 +3,22 @@ import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
-//Acknowledgements
+//Acknowledgements/Credits
 //  Runestone Academy - Used for learning how a lot of these concepts work including if-statements,
 //      appending to strings, and setting up functions to accept parameters.
 //  Baeldung.com - This was used for learning how to generate random numbers, string concatenation,
-//      and presence of an element in a list.
+//      presence of an element in a list, string to character conversion, and character to string conversion.
 //  AlgoCademy - This was used for learning how to slice strings to access the characters I want.
 //  Google AI - Other various inputs I learned from the Google AI overview including how to get user input,
 //      debugging an error with my formatting (I added an extra ';'  -_- ), and comparing booleans.
+//  Programiz - Learning how to check if a string is alphabeticals
 
-public class Hangman 
+public class Hangman
     {
     public static void main(String[] args) 
     {
         // Setup for the game
-        List<String> GuessedLetters = new ArrayList<String>();
+        List<Character> GuessedLetters = new ArrayList<Character>();
         
         int LivesRemaining = 5;
         
@@ -31,16 +32,37 @@ public class Hangman
         // This is the loop that actually runs the game.
         while (LivesRemaining >= 0)
         {
-            String GuessedLetter = GetGuess(scanner);
-            GuessedLetters.add(GuessedLetter);
+            String UserGuess = GetGuess(scanner);
+
+            if (UserGuess.length() > 1)
+            {
+                System.out.println("Invalid input. Please submit exactly one letter.\n");
+                continue;
+            }
             
-            if (SecretWord.contains(GuessedLetter) == true)
+            char GuessedLetter = UserGuess.toUpperCase().charAt(0);
+
+            if (Character.isAlphabetic(GuessedLetter) == false)
+            {
+                System.out.println("Invalid input. Please submit a letter.\n");
+                continue;
+            }
+
+            if (GuessedLetters.contains(GuessedLetter))
+            {
+                System.out.println(GuessedLetter + " has already been guessed. Please try again.\n");
+                continue;
+            }
+
+            GuessedLetters.add(GuessedLetter);
+
+            if (SecretWord.contains(Character.toString(GuessedLetter)) == true)
             {
                 System.out.println(GuessedLetter + " is in the secret word!\n");
 
-                if (SecretWordGuessed(SecretWord, GuessedLetters) == true)
+                if (IsSecretWordGuessed(SecretWord, GuessedLetters) == true)
                 {
-                    System.out.println("Congratulations, you uessed the word!\n");
+                    System.out.println("Congratulations, you guessed the word!\n");
                     DisplayGuessedLetters(SecretWord, GuessedLetters);
                     return;
                 }
@@ -95,7 +117,7 @@ public class Hangman
     }
 
     // This function prints out the secret word, with unguessed letters replaced with underscores.
-    public static void DisplayGuessedLetters(String SecretWord, List<String> GuessedLetters)
+    public static void DisplayGuessedLetters(String SecretWord, List<Character> GuessedLetters)
     {
         int WordLength = SecretWord.length();
 
@@ -104,7 +126,7 @@ public class Hangman
         // This loop goes through each letter in the secret word and reveals the letters that have been guessed.
         for (int LetterIdx = 0; LetterIdx < WordLength; LetterIdx++)
         {
-            String CurrentLetter = SecretWord.substring(LetterIdx, LetterIdx+1);
+            char CurrentLetter = SecretWord.substring(LetterIdx, LetterIdx+1).charAt(0);
 
             if (GuessedLetters.contains(CurrentLetter))
             {
@@ -121,13 +143,13 @@ public class Hangman
     }
 
     // This function returns true if all of the letters in the secret word have been guessed, false otherwise.
-    public static boolean SecretWordGuessed(String SecretWord, List<String> GuessedLetters)
+    public static boolean IsSecretWordGuessed(String SecretWord, List<Character> GuessedLetters)
     {
         int WordLength = SecretWord.length();
 
         for (int LetterIdx = 0; LetterIdx < WordLength; LetterIdx++)
         {
-            String CurrentLetter = SecretWord.substring(LetterIdx, LetterIdx+1);
+            char CurrentLetter = SecretWord.substring(LetterIdx, LetterIdx+1).charAt(0);
 
             if (GuessedLetters.contains(CurrentLetter) == false)
             {
