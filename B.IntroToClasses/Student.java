@@ -1,5 +1,3 @@
-package B_IntroToClasses;
-
 public class Student
 {
     String name;
