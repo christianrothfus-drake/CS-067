@@ -1,3 +1,4 @@
+// Christian Rothfus
 package Assignment3;
 import java.lang.Math;
 
