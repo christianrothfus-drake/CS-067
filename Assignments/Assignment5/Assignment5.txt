@@ -1,0 +1,27 @@
+Christian Rothfus
+
+The thing I chose to research was what it means for a class to be an abstract class.
+What I learned is that it basically means it's a class that is not meant to be constructed directly.
+Instead, it is meant to be an underlying class that other classes can be built off of.
+The abstract class apperas in the character file for the character class, and is used to support the player and enemy classes.
+This is helpful because it means you can save time when building classes that all have similar features, much in the same way that a function helps us by eliminating the need to write the same lines of code over and over again.
+I have actually used a similar idea in Python. I like to build my own classes that support the use of tkinter objects.
+I don't like always having to call the .config method, so I wrote a tkTool class that is used to help create other classes for different tkinter GUI objects such as buttons, labels, and frames.
+
+https://www.w3schools.com/java/ref_keyword_abstract.asp  (much more helpful)
+https://docs.oracle.com/javase/tutorial/java/IandI/abstract.html  (much less helpful)
+
+The main things I did was add new options for the player to take while playing the game.
+The new actions include
+    1. Use a new area attack that damages all enemies
+    2. Hone your weapons (same as the level up reward)
+    3. Sacrifice yourself to give your life to another player.
+I chose to add an area attack because adding new ways to attack seemed like a logical progession over having single target attacks.
+I added the choice to hone your weapons because I realized that the goblins increase in quantity, but not toughness. This gives a smart player the ability to exploit that.
+I chose to add the ability to sacrifice yourself to heal another player because it seemed funny and also like something that would reward players conscious of the game state.
+
+I also added a new attribute to the character class that causes the character to take double damage (the opposite of the blocking effect).
+I added this as an additional cost to honing your weapons as if you get your spread damage to 10 you can one shot all goblins.
+
+The changes I made took place in the Main, Character, and Player classes.
+Specifically the changes are in the player turns loop of the Main file, and the Character and Player classes as new attributes and methods.
