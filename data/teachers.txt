@@ -1,0 +1,2 @@
+TCH201|Meera Iyer|Computer Science|42|72000.0
+TCH202|Daniel Brooks|Data Science|38|68500.0

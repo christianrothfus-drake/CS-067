@@ -1,0 +1,6 @@
+{
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "Assignments/Assignment10/lib/**/*.jar"
+    ]
+}
